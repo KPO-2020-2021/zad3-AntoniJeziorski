@@ -10,8 +10,6 @@
 #define REC 4
 
 class Rectangle {
-  friend std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr);
-  friend std::istream& operator >> (std::istream &Strm, Rectangle &Pr);
   Vector Corners[REC];
   public:
     Rectangle Translation(Vector);
@@ -19,6 +17,8 @@ class Rectangle {
     void Sides();
     Rectangle(Vector, Vector, Vector, Vector);
     bool ZapisWspolrzednychDoPliku( const char *sNazwaPliku);
+    const Vector &operator [] (int index) const;
+    Vector &operator [] (int index);
 };
 
 std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr);

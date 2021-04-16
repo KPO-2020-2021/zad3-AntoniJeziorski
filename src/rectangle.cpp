@@ -4,6 +4,22 @@
 
 
 
+const Vector &Rectangle::operator [] (int index) const {
+    if (index < 0 || index >= REC) {
+        throw std::runtime_error("Error:  Blad ilosci wierzcholkow!");
+    }
+    return Corners[index];
+}
+
+
+Vector &Rectangle::operator[](int index) {
+    return const_cast<Vector &>(const_cast<const Rectangle *>(this)->operator[](index));
+}
+
+
+
+
+
 /*!
  * Przeciazenie operatora bitowego dla wyswietladnia Rectanglea
  * Argumenty:
@@ -15,7 +31,7 @@
 
 std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr) {
     for(int i=0; i< REC; i++) {
-        Strm << Pr.Corners[i] << std::endl;
+        Strm << Pr[i] << std::endl;
     }
     return Strm;
 }
@@ -33,7 +49,7 @@ std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr) {
 
 std::istream& operator >> (std::istream &Strm, Rectangle &Pr) {
     for(int i=0; i< REC; i++) {
-        Strm >> Pr.Corners[i];
+        Strm >> Pr[i];
     }
     return Strm;
 }
@@ -175,9 +191,8 @@ bool Rectangle::ZapisWspolrzednychDoPliku( const char *sNazwaPliku) {
 
     StrmPlikowy.open(sNazwaPliku);
     if (!StrmPlikowy.is_open())  {
-    std::cerr << ":(  Operacja otwarcia do zapisu \"" << sNazwaPliku << "\"" << std::endl
-        << ":(  nie powiodla sie." << std::endl;
-    return false;
+        throw std::runtime_error("Operacja otwarcia pliku do zapisu nie powiodla sie");
+        return false;
     }
 
     StrmPlikowy << *this;

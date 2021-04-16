@@ -23,8 +23,13 @@ Vector::Vector() {
  */
 
 Vector::Vector(double tmp[SIZE]) {
-    for (int i = 0; i < SIZE; ++i) {
+    if(SIZE > 2 || SIZE < 0) {
+        throw std::runtime_error("Niepoprawny rozmiar wektora ");
+    }
+    else {
+        for (int i = 0; i < SIZE; ++i) {
         size[i] = tmp[i];
+    }
     }
 }
 
@@ -114,8 +119,8 @@ Vector Vector::operator / (const double &tmp) {
  */
 const double &Vector::operator [] (int index) const {
     if (index < 0 || index >= SIZE) {
-        std::cerr << "Error: Wektor jest poza zasiegiem!" << std::endl;
-    } // lepiej byłoby rzucić wyjątkiem stdexcept
+        throw std::runtime_error("Error: Wektor jest poza zasiegiem!");
+    }
     return size[index];
 }
 

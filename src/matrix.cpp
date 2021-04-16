@@ -24,11 +24,17 @@ Matrix::Matrix() {
  |      Matrix wypelniona wartosciami podanymi w argumencie.                 |
  */
 Matrix::Matrix(double tmp[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; ++i) {
-        for (int j = 0; j < SIZE; ++j) {
-            value[i][j] = tmp[i][j];
-        }
+    if((SIZE < 0) || (SIZE > 2)) {
+        throw std::runtime_error("Niepoprawny rozmiar macierzy");
     }
+    else {
+        for (int i = 0; i < SIZE; ++i) {
+            for (int j = 0; j < SIZE; ++j) {
+                value[i][j] = tmp[i][j];
+            }
+    }
+    }
+    
 }
 
 
@@ -63,13 +69,11 @@ Vector Matrix::operator * (Vector tmp) {
 double &Matrix::operator()(unsigned int row, unsigned int column) {
 
     if (row >= SIZE) {
-        std::cout << "Error: Matrix jest poza zasiegiem"; 
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
+        throw std::runtime_error("Error: Matrix jest poza zasiegiem"); 
     }
 
     if (column >= SIZE) {
-        std::cout << "Error: Matrix jest poza zasiegiem";
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
+        throw std::runtime_error("Error: Matrix jest poza zasiegiem");
     }
 
     return value[row][column];
@@ -87,13 +91,11 @@ double &Matrix::operator()(unsigned int row, unsigned int column) {
 const double &Matrix::operator () (unsigned int row, unsigned int column) const {
 
     if (row >= SIZE) {
-        std::cout << "Error: Matrix jest poza zasiegiem";
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
+        throw std::runtime_error("Error: Matrix jest poza zasiegiem");
     }
 
     if (column >= SIZE) {
-        std::cout << "Error: Matrix jest poza zasiegiem";
-        exit(0); // lepiej byłoby rzucić wyjątkiem stdexcept
+        throw std::runtime_error("Error: Matrix jest poza zasiegiem");
     }
 
     return value[row][column];
