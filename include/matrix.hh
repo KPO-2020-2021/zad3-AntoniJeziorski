@@ -26,7 +26,7 @@ public:
     double  &operator () (unsigned int row, unsigned int column);
     
     const double &operator () (unsigned int row, unsigned int column) const;
-    Matrix MacierzObrotu(double);
+    Matrix RotationMatrix(double);
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);

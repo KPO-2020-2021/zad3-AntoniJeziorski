@@ -14,9 +14,9 @@ class Rectangle {
   friend std::istream& operator >> (std::istream &Strm, Rectangle &Pr);
   Vector Corners[REC];
   public:
-    Rectangle translacja(Vector);
-    Rectangle obrot(double, int);
-    void boki();
+    Rectangle Translation(Vector);
+    Rectangle Rotation(double, int);
+    void Sides();
     Rectangle(Vector, Vector, Vector, Vector);
     bool ZapisWspolrzednychDoPliku( const char *sNazwaPliku);
 };

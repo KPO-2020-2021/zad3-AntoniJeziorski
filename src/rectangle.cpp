@@ -1,6 +1,6 @@
 #include "rectagle.hh"
 
-#define MAX_DIFF 0.0000000001
+
 
 
 
@@ -48,9 +48,9 @@ std::istream& operator >> (std::istream &Strm, Rectangle &Pr) {
  *  Rectangle po przesunieciu o zadany wektor
  */
 
-Rectangle Rectangle::translacja(Vector wektor) {
+Rectangle Rectangle::Translation(Vector vector) {
     for(int i=0; i<REC; i++) {
-        this->Corners[i] = this->Corners[i] + wektor;
+        this->Corners[i] = this->Corners[i] + vector;
     }
     return *this;
 }
@@ -68,12 +68,12 @@ Rectangle Rectangle::translacja(Vector wektor) {
  *  Rectangle po wykonaniu obrotu
  */
 
-Rectangle Rectangle::obrot(double kat, int ilosc) {
-    Matrix obrot;
-    obrot.MacierzObrotu(kat);
-    for(int j=0; j<ilosc; j++){
+Rectangle Rectangle::Rotation(double angle, int amount) {
+    Matrix Rotation;
+    Rotation.RotationMatrix(angle);
+    for(int j=0; j < amount; j++){
         for(int i=0; i<REC; i++) {
-            this->Corners[i] = obrot * this->Corners[i];
+            this->Corners[i] = Rotation * this->Corners[i];
         }
     }
     return *this;
@@ -86,7 +86,7 @@ Rectangle Rectangle::obrot(double kat, int ilosc) {
  * Zwraca:
  */
 
-void Rectangle::boki() {
+void Rectangle::Sides() {
     double a, b, c, d; // dlugosci bokow
     a = sqrt(pow(this->Corners[0][0] - this->Corners[1][0],2)+pow(this->Corners[0][1]-this->Corners[1][1],2));
     b = sqrt(pow(this->Corners[2][0] - this->Corners[3][0],2)+pow(this->Corners[2][1]-this->Corners[3][1],2));

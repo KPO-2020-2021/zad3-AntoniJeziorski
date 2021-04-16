@@ -152,10 +152,10 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
 }
 
 
-Matrix Matrix::MacierzObrotu(double kat) {
-    this->value[0][0] = cos(kat*M_PI/180);
-    this->value[0][1] = -sin(kat*M_PI/180);
-    this->value[1][0] = sin(kat*M_PI/180);
-    this->value[1][1] = cos(kat*M_PI/180);
+Matrix Matrix::RotationMatrix(double angle) {
+    this->value[0][0] = cos(angle*M_PI/180);
+    this->value[0][1] = -sin(angle*M_PI/180);
+    this->value[1][0] = sin(angle*M_PI/180);
+    this->value[1][1] = cos(angle*M_PI/180);
     return *this;
 }
