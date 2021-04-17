@@ -16,6 +16,7 @@ class Rectangle {
     Rectangle Rotation(double, int);
     void Sides();
     Rectangle(Vector, Vector, Vector, Vector);
+    Rectangle();
     bool ZapisWspolrzednychDoPliku( const char *sNazwaPliku);
     const Vector &operator [] (int index) const;
     Vector &operator [] (int index);

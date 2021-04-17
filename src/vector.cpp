@@ -162,5 +162,7 @@ std::istream &operator >> (std::istream &in, Vector &tmp) {
         in >> tmp[i];
     }
     std::cout << std::endl;
+    if(in.fail())
+        throw std::runtime_error("Niepoprawny typ zmiennych w wektorze");
     return in;
 }

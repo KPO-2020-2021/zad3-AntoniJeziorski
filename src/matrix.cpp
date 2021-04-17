@@ -133,6 +133,8 @@ std::istream &operator>>(std::istream &in, Matrix &mat) {
             in >> mat(i, j);
         }
     }
+    if(in.fail())
+        throw std::runtime_error("Niepoprawny typ zmiennej w macierzy");
     return in;
 }
 

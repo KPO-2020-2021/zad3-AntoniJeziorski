@@ -14,10 +14,9 @@
 #include <unistd.h>
 
 #include "exampleConfig.h"
-#include "example.h"
 #include "vector.hh"
 #include "matrix.hh"
-#include "rectagle.hh"
+#include "rectangle.hh"
 #include "../include/lacze_do_gnuplota.hh"
 
 

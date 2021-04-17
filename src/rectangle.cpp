@@ -1,4 +1,4 @@
-#include "rectagle.hh"
+#include "rectangle.hh"
 
 
 
@@ -30,7 +30,7 @@ Vector &Rectangle::operator[](int index) {
  */
 
 std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr) {
-    for(int i=0; i< REC; i++) {
+    for(int i=0; i < REC; i++) {
         Strm << Pr[i] << std::endl;
     }
     return Strm;
@@ -48,7 +48,7 @@ std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr) {
  */
 
 std::istream& operator >> (std::istream &Strm, Rectangle &Pr) {
-    for(int i=0; i< REC; i++) {
+    for(int i=0; i < REC; i++) {
         Strm >> Pr[i];
     }
     return Strm;
@@ -172,6 +172,13 @@ Rectangle::Rectangle(Vector a, Vector b, Vector c, Vector d) {
     this->Corners[1] = b;
     this->Corners[2] = c;
     this->Corners[3] = d;
+}
+
+Rectangle::Rectangle() {
+    this->Corners[0] = 0;
+    this->Corners[1] = 0;
+    this->Corners[2] = 0;
+    this->Corners[3] = 0;
 }
 
 

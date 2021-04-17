@@ -11,8 +11,7 @@
 
 class Matrix {
 
-private:
-    double value[SIZE][SIZE];               // Wartosci macierzy
+double value[SIZE][SIZE];               // Wartosci macierzy
 
 public:
     Matrix(double [SIZE][SIZE]);            // Konstruktor klasy
