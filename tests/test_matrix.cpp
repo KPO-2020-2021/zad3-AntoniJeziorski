@@ -43,6 +43,12 @@ TEST_CASE("test przeciazenia operatora >>") {
     CHECK((test(0, 0) == 1 && test(0, 1) == 2 && test(1, 0) == 3 && test(1, 1) == 4));
 }
 
+TEST_CASE("test przeciazenia operatora >> dla bledu") {
+    Matrix test;
+    std::istringstream in("o r t m");
+    WARN_THROWS(in >> test);
+}
+
 TEST_CASE("test przeciazenia operatora <<") {
     double array[2][2] = {1, 2, 3, 4};
     Matrix test(array);
@@ -56,3 +62,16 @@ TEST_CASE("test metody RotationMatrix") {
     test.RotationMatrix(90);
     CHECK(((test(0, 0) >= 0 - 0.0000000001 && test(0, 0) <= 0 + 0.0000000001 && test(0, 1) == -1 && test(1, 0) == 1 && test(1, 1) >= 0 - 0,0000000001 && test(1, 1) <= 0 + 0,0000000001)));
 }
+
+TEST_CASE("test przeciazenia operatora () dla odczytu z bledem") {
+    double array2[2][2] = {1, 2, 3, 4};
+    Matrix test(array2);
+    std::ostringstream out;
+    WARN_THROWS(out << test(10, -15));
+}
+
+TEST_CASE("test przeciazenia operatora () dla wczytywania z bledem") {
+    Matrix test;
+    WARN_THROWS(test(10, -15) = 5);
+}
+

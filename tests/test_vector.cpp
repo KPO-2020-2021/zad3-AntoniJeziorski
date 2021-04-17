@@ -75,3 +75,30 @@ TEST_CASE("test przeciazenia operatora /") {
     CHECK((v2[0] == 2 && v2[1] == 2.5));
 }
 
+TEST_CASE("test przeciazenia operatora <<") {
+    double array[2] = {4,5};
+    Vector vec(array);
+    std::ostringstream out;
+    out << vec;
+    std::cout << out.str();
+    CHECK("4.0000000000 5.0000000000 " == out.str());
+}
+
+TEST_CASE("test przeciazenia operatora >> dla bledu") {
+    Vector vec;
+    std::istringstream in("o #");
+    WARN_THROWS(in >> vec);
+}
+
+TEST_CASE("test przeciazenia operatora [] dla wczytywania z bledem") {
+    Vector vec;
+    WARN_THROWS(vec[-21] = 1);
+}
+
+TEST_CASE("test przeciazenia operatora [] dla odczytu z bledem") {
+    double array[2] = {4 ,5};
+    Vector vec(array);
+    std::ostringstream out;
+    WARN_THROWS(out << vec[-10]);
+}
+
