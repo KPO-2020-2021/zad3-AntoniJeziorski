@@ -19,7 +19,7 @@ class Rectangle {
 
     Rectangle Rotation(double, int); // Metoda obrotu
 
-    void Sides(); // Metoda sprawdzajaca boki
+    void Sides() const; // Metoda sprawdzajaca boki
 
     Rectangle(Vector, Vector, Vector, Vector); // Konstruktor parametryczny
 

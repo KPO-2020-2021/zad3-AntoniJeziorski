@@ -117,7 +117,7 @@ Rectangle Rectangle::Rotation(double angle, int amount) {
  * Zwraca:
  */
 
-void Rectangle::Sides() {
+void Rectangle::Sides() const {
     double a, b, c, d; // dlugosci bokow
     a = sqrt(pow(this->Corners[0][0] - this->Corners[1][0],2)+pow(this->Corners[0][1]-this->Corners[1][1],2));
     b = sqrt(pow(this->Corners[2][0] - this->Corners[3][0],2)+pow(this->Corners[2][1]-this->Corners[3][1],2));

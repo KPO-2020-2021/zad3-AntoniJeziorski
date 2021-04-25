@@ -102,3 +102,9 @@ TEST_CASE("test przeciazenia operatora [] dla odczytu z bledem") {
     WARN_THROWS(out << vec[-10]);
 }
 
+TEST_CASE("test dzielenia wektora przez 0") {
+    double array[2] = {4 ,5};
+    Vector vec(array);
+    double a = 0;
+    WARN_THROWS(vec/a);
+}
