@@ -23,12 +23,12 @@
 
 
 int main() {
-    double X[2]={1,1}, Y[2]={50,1}, Z[2]={50,100}, T[2]={1,100}, angle, amount;
-    Vector x(X), y(Y), z(Z), t(T), v;
-    Rectangle Rec(x, y, z, t);   
+    double X[2]={1,1}, Y[2]={50,1}, Z[2]={50,100}, T[2]={1,100}, angle, amount; // tablice typu double z wartosciami wierzcholkow bazowego prostokata, kat do obrotu, ilosc obrotow
+    Vector x(X), y(Y), z(Z), t(T), v; // Wektory reprezentujace wierzcholki prostokata i wektor do translacji
+    Rectangle Rec(x, y, z, t);   // Prostokat
     PzG::LaczeDoGNUPlota  Lacze;    // Ta zmienna jest potrzebna do wizualizacji
                                     // rysunku Prostokata
-    char option = '0', animation = '0';
+    char option = '0', animation = '0'; // Zmienne do oslugi menu
 
 //-------------------------------------------------------
     //  Wspolrzedne wierzcholkow beda zapisywane w pliku "Prostokat.dat"
@@ -49,11 +49,11 @@ int main() {
     //
     Lacze.ZmienTrybRys(PzG::TR_2D);
     try {
-        Rec.Sides();
-        Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-        if (!Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat")) return 1;
-        while(option != 'k') {
-            if(option == '0')
+        Rec.Sides(); // Wyswietlenie dlugosci bokow oraz sprawdzenie, czy jest to prostokat
+        Lacze.Rysuj(); // Wyswietlenie prostokata
+        Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat");
+        while(option != 'k') { // Dopoki nie zostanie podane k
+            if(option == '0') // 
             {
                 std::cout << "o - obrot prostokata o zadany kat" << std::endl;
                 std::cout << "p - przesuniecie prostokata o zadany wektor" << std::endl;
@@ -68,25 +68,24 @@ int main() {
                 case 'k':
                     option = 'k'; break;
                 case 'p':
-                    
                     std::cout << "Podaj wspolrzedne wektora" << std::endl;
                     std::cin >> v;
-                    Rec.Translation(v);
-                    Rec.Sides();
-                    if (!Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat")) return 1;
-                    Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+                    Rec.Translation(v); // Wykonaj translacje
+                    Rec.Sides(); // i sprawdz dlugosci bokow
+                    Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat");
+                    Lacze.Rysuj(); // Wyswietl wynik translacji
                     break;
                 case 'o':
                     
                     std::cout << "Podaj kat w stopniach oraz ilosc obrotow" << std::endl;
                     std::cin >> angle >> amount;
-                    Rec.Rotation(angle, amount);
-                    Rec.Sides();
-                    if (!Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat")) return 1;
-                    Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+                    Rec.Rotation(angle, amount); // Wykonaj rotacje
+                    Rec.Sides(); // i sprawdz dlugosci bokow
+                    Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat"); 
+                    Lacze.Rysuj(); // Wyswietl wynik rotacji
                     break;
                 case 'w':
-                    std::cout << Rec; break;
+                    std::cout << Rec; break; // Wyswietl wspolrzedne wierzcholkow prostokata
                 case 'm':
                     option = '0';
                     break; 
@@ -95,28 +94,26 @@ int main() {
                     std::cin >> animation;
                     switch(animation) {
                         case '1':
-                            
                             std::cout << "Podaj kat w stopniach oraz ilosc obrotow" << std::endl;
                             std::cin >> angle >> amount;
-                            for(int j=0; j < amount; j++) {
-                                for(int i=0; i < FLOPS; i++) {
-                                    Rec.Rotation(angle / FLOPS, 1);
-                                    if (!Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat")) return 1;
+                            for(int j=0; j < amount; j++) { // Petla do ilosci obrotow
+                                for(int i=0; i < FLOPS; i++) { // Petla sluzaca do wyswietlania klatek animacji
+                                    Rec.Rotation(angle / FLOPS, 1);  // Rotacja prostokata o kat podzielony przez ilosc klatek
+                                    Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat"); 
                                     usleep(5000);
-                                    Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+                                    Lacze.Rysuj();   // Wyswietlanie w petli kolejnych klatek
                                     usleep(5000);
                                 }    
                             }
                             break;
                         case '2':
-                            
                             std::cout << "Podaj wspolrzedne wektora" << std::endl;
                             std::cin >> v;
-                            for(int i=0; i < FLOPS; i++) {
-                                Rec.Translation(v/FLOPS);
-                                if (!Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat")) return 1;
+                            for(int i=0; i < FLOPS; i++) { // Petla sluzaca do wyswietlania klatek animacji
+                                    Rec.Translation(v/FLOPS); // traslacja prostokata o wektor podzielony przez ilosc klatek
+                                    Rec.ZapisWspolrzednychDoPliku("../datasets/prostokat.dat"); 
                                     usleep(5000);
-                                    Lacze.Rysuj(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+                                    Lacze.Rysuj(); // Wyswietlanie w petli kolejnych klatek
                                     usleep(5000);
                             }
                             break;

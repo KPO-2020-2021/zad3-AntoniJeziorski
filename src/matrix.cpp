@@ -5,7 +5,7 @@
  |  Argumenty:                                                                |
  |      Brak argumentow.                                                      |
  |  Zwraca:                                                                   |
- |      Matrix wypelnione wartoscia 0.                                       |
+ |      Macierz wypelnione wartoscia 0.                                       |
  */
 Matrix::Matrix() {
     for (int i = 0; i < SIZE; ++i) {
@@ -21,7 +21,7 @@ Matrix::Matrix() {
  |  Argumenty:                                                                |
  |      tmp - dwuwymiarowa tablica z elementami typu double.                  |
  |  Zwraca:                                                                   |
- |      Matrix wypelniona wartosciami podanymi w argumencie.                 |
+ |      Macierz wypelniona wartosciami podanymi w argumencie.                 |
  */
 Matrix::Matrix(double tmp[SIZE][SIZE]) {
     if((SIZE < 0) || (SIZE > 2)) {
@@ -32,14 +32,14 @@ Matrix::Matrix(double tmp[SIZE][SIZE]) {
             for (int j = 0; j < SIZE; ++j) {
                 value[i][j] = tmp[i][j];
             }
-    }
+        }
     }
     
 }
 
 
 /******************************************************************************
- |  Realizuje mnozenie Matrixy przez wektor.                                 |
+ |  Realizuje mnozenie macierzy przez wektor.                                 |
  |  Argumenty:                                                                |
  |      this - Matrix, czyli pierwszy skladnik mnozenia,                     |
  |      v - wektor, czyli drugi skladnik mnozenia.                            |
@@ -59,21 +59,21 @@ Vector Matrix::operator * (Vector tmp) {
 
 
 /******************************************************************************
- |  Funktor Matrixy                                                          |
+ |  Funktor macierzy                                                         |
  |  Argumenty:                                                                |
  |      row - numer wiersza.                                                  |
  |      column - numer kolumny.                                               |
  |  Zwraca:                                                                   |
- |      Wartosc Matrixy w danym miejscu tablicy.                             |
+ |      Wartosc macierzy w danym miejscu tablicy.                             |
  */
 double &Matrix::operator()(unsigned int row, unsigned int column) {
 
     if (row >= SIZE) {
-        throw std::runtime_error("Error: Matrix jest poza zasiegiem"); 
+        throw std::runtime_error("Error: Macierz jest poza zasiegiem"); 
     }
 
     if (column >= SIZE) {
-        throw std::runtime_error("Error: Matrix jest poza zasiegiem");
+        throw std::runtime_error("Error: Macierz jest poza zasiegiem");
     }
 
     return value[row][column];
@@ -81,21 +81,21 @@ double &Matrix::operator()(unsigned int row, unsigned int column) {
 
 
 /******************************************************************************
- |  Funktor Matrixy                                                          |
+ |  Funktor Matrixy                                                           |
  |  Argumenty:                                                                |
  |      row - numer wiersza.                                                  |
  |      column - numer kolumny.                                               |
  |  Zwraca:                                                                   |
- |      Wartosc Matrixy w danym miejscu tablicy jako stala.                  |
+ |      Wartosc macierzy w danym miejscu tablicy jako stala.                  |
  */
 const double &Matrix::operator () (unsigned int row, unsigned int column) const {
 
     if (row >= SIZE) {
-        throw std::runtime_error("Error: Matrix jest poza zasiegiem");
+        throw std::runtime_error("Error: Macierz jest poza zasiegiem");
     }
 
     if (column >= SIZE) {
-        throw std::runtime_error("Error: Matrix jest poza zasiegiem");
+        throw std::runtime_error("Error: Macierz jest poza zasiegiem");
     }
 
     return value[row][column];
@@ -103,12 +103,12 @@ const double &Matrix::operator () (unsigned int row, unsigned int column) const 
 
 
 /******************************************************************************
- |  Przeciążenie dodawania Matrixy                                                          |
+ |  Przeciążenie dodawania macierzy                                           |
  |  Argumenty:                                                                |
  |      this - Matrix, czyli pierwszy skladnik dodawania,                     |
- |      v - wektor, czyli drugi skladnik dodawania.                                               |
+ |      v - wektor, czyli drugi skladnik dodawania.                           |
  |  Zwraca:                                                                   |
- |      Matrix - iloczyn dwóch podanych Matrixy.                  |
+ |      Matrix - iloczyn dwóch podanych macierzy.                             |
  */
 Matrix Matrix::operator + (Matrix tmp) {
     Matrix result;
@@ -143,7 +143,7 @@ std::istream &operator>>(std::istream &in, Matrix &mat) {
  |  Przeciazenie operatora <<                                                 |
  |  Argumenty:                                                                |
  |      out - strumien wejsciowy,                                             |
- |      mat - Matrix.                                                        |
+ |      mat - Matrix.                                                         |
  */
 std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     for (int i = 0; i < SIZE; ++i) {
@@ -154,6 +154,14 @@ std::ostream &operator<<(std::ostream &out, const Matrix &mat) {
     }
     return out;
 }
+
+
+/*!
+ * Metoda tworzaca macierz obrotu
+ * Argumenty:
+ *      this - macierz, ktora zostanie wypelniona odpowiednimi wartosciami
+ *      angle - kat o jaki chcemy obrocic prostokat
+ */
 
 
 Matrix Matrix::RotationMatrix(double angle) {

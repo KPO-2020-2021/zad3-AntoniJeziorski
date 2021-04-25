@@ -1,6 +1,12 @@
 #include "rectangle.hh"
 
-
+/*!
+ * Przeciazenie operator indeksujacego dla odczytu
+ * Argumenty:
+ *      index - numer miejsca w tablicy
+ * Zwraca:
+ *      Wektor reprezentujacy jeden z wierzcholkow jako stala
+ */
 
 
 
@@ -10,6 +16,14 @@ const Vector &Rectangle::operator [] (int index) const {
     }
     return Corners[index];
 }
+
+/*!
+ * Przeciazenie operator indeksujacego dla zapisu
+ * Argumenty:
+ *      index - numer miejsca w tablicy
+ * Zwraca:
+ *      Wektor reprezentujacy jeden z wierzcholkow
+ */
 
 
 Vector &Rectangle::operator[](int index) {
@@ -21,12 +35,12 @@ Vector &Rectangle::operator[](int index) {
 
 
 /*!
- * Przeciazenie operatora bitowego dla wyswietladnia Rectanglea
+ * Przeciazenie operatora bitowego dla wyswietladnia prostokata
  * Argumenty:
  *  &Strm - referencja do strumienia wyjsciowego
- *  &Pr - Rectangle, ktory zostanie wyswietlony
+ *  &Pr - prostokat, ktory zostanie wyswietlony
  * Zwraca:
- *  Strumien wyjsciowy z Rectangleem
+ *  Strumien wyjsciowy z prostokatem
  */
 
 std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr) {
@@ -39,12 +53,12 @@ std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr) {
 
 
 /*!
- * Przeciazenie operatora bitowego dla wczytywania Rectanglea
+ * Przeciazenie operatora bitowego dla wczytywania prostokata
  * Argumenty:
  *  &Strm - referencja do strumienia wejsciowego
- *  &Pr -  referencja do wprowadzanego Rectanglea
+ *  &Pr -  referencja do wprowadzanego prostokata
  * Zwraca:
- *  Strumien wejsciowy z Rectangleem
+ *  Strumien wejsciowy z prostokatem
  */
 
 std::istream& operator >> (std::istream &Strm, Rectangle &Pr) {
@@ -57,11 +71,11 @@ std::istream& operator >> (std::istream &Strm, Rectangle &Pr) {
 
 
 /*!
- * Realizuje translacje Rectanglea o zadany wektor
+ * Realizuje translacje prostokata o zadany wektor
  * Argumenty:
- *  wektor - wektor, o jaki ma zostac wykonana translacja
+ *  vector - wektor, o jaki ma zostac wykonana translacja
  * Zwraca:
- *  Rectangle po przesunieciu o zadany wektor
+ *  Prostokat po przesunieciu o zadany wektor
  */
 
 Rectangle Rectangle::Translation(Vector vector) {
@@ -78,10 +92,10 @@ Rectangle Rectangle::Translation(Vector vector) {
  * Realizuje obrot Rectanglea wokol poczatku ukladu wspolrzednych
  * o zadany kat podana ilosc razy
  * Argumenty:
- *  kat - kat o jaki zostanie wykonany obrot
- *  ilosc - ilosc obrotow
+ *  angle - kat o jaki zostanie wykonany obrot
+ *  amount - ilosc obrotow
  * Zwraca:
- *  Rectangle po wykonaniu obrotu
+ *  Prostokat po wykonaniu obrotu
  */
 
 Rectangle Rectangle::Rotation(double angle, int amount) {
@@ -97,8 +111,9 @@ Rectangle Rectangle::Rotation(double angle, int amount) {
 
 
 /*!
- * Wyswietla dlugosci bokow Rectanglea oraz sprawdza, czy przeciwne boki sa tej samej dlugosci
+ * Wyswietla dlugosci bokow prostokata oraz sprawdza, czy przeciwne boki sa tej samej dlugosci
  * Argumenty:
+ *  this - sprawdzany prostokat
  * Zwraca:
  */
 
@@ -161,10 +176,11 @@ void Rectangle::Sides() {
 
 
 /*!
- * Konstruktor Rectanglea
+ * Konstruktor parametryczny prostokata
  * Argumenty:
  *  4 wektory, gdzie kazdy reprezentuje wspolrzedne jednego wierzcholka
  * Zwraca:
+ *  Prostokat o zadanych wierzcholkach
  */
 
 Rectangle::Rectangle(Vector a, Vector b, Vector c, Vector d) {
@@ -173,6 +189,15 @@ Rectangle::Rectangle(Vector a, Vector b, Vector c, Vector d) {
     this->Corners[2] = c;
     this->Corners[3] = d;
 }
+
+
+
+/*!
+ * Konstruktor bezparametryczny prostokata
+ * Argumenty:
+ * Zwraca:
+ *  Tablice 4 wektorow z ktorych kazdy jest wypelniony zerami
+ */
 
 Rectangle::Rectangle() {
     this->Corners[0] = 0;
@@ -184,7 +209,7 @@ Rectangle::Rectangle() {
 
 
 /*!
- * Realizuje zapis wspolrzednych wierzcholkow Rectanglea do pliku
+ * Realizuje zapis wspolrzednych wierzcholkow prostokata do pliku
  * Argumenty:
  *  *sNazwaPliku - wskaznik do pliku, w ktorym zostana zapisane wspolrzedne
  * Zwraca:

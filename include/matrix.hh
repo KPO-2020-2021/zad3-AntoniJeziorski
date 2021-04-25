@@ -20,16 +20,17 @@ public:
 
     Vector operator * (Vector tmp);           // Operator mnożenia przez wektor
 
-    Matrix operator + (Matrix tmp);
+    Matrix operator + (Matrix tmp);           // Operator dodawania macierzy
 
-    double  &operator () (unsigned int row, unsigned int column);
+    double  &operator () (unsigned int row, unsigned int column);     // Operator funkcyjny dla odczytu
     
-    const double &operator () (unsigned int row, unsigned int column) const;
-    Matrix RotationMatrix(double);
+    const double &operator () (unsigned int row, unsigned int column) const; // operator funkcyjny dla zapisu
+
+    Matrix RotationMatrix(double);  // Metoda tworzaca macierz obrotu
 };
 
-std::istream &operator>>(std::istream &in, Matrix &mat);
+std::istream &operator>>(std::istream &in, Matrix &mat);  // Operator bitowy >>
 
-std::ostream &operator<<(std::ostream &out, Matrix const &mat);
+std::ostream &operator<<(std::ostream &out, Matrix const &mat); // Operator bitowy <<
 
 #endif

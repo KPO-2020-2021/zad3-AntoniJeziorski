@@ -10,20 +10,31 @@
 #define REC 4
 
 class Rectangle {
-  Vector Corners[REC];
+
+  Vector Corners[REC]; // Tablica 4 wektorow reprezentujaca wierzcholki prostokata
+
   public:
-    Rectangle Translation(Vector);
-    Rectangle Rotation(double, int);
-    void Sides();
-    Rectangle(Vector, Vector, Vector, Vector);
-    Rectangle();
-    bool ZapisWspolrzednychDoPliku( const char *sNazwaPliku);
-    const Vector &operator [] (int index) const;
-    Vector &operator [] (int index);
+
+    Rectangle Translation(Vector); // Metoda translacji
+
+    Rectangle Rotation(double, int); // Metoda obrotu
+
+    void Sides(); // Metoda sprawdzajaca boki
+
+    Rectangle(Vector, Vector, Vector, Vector); // Konstruktor parametryczny
+
+    Rectangle(); // Konstruktor bezparametryczny
+
+    bool ZapisWspolrzednychDoPliku( const char *sNazwaPliku); // Metoda zapisu do pliku
+
+    const Vector &operator [] (int index) const; // Operator indeksujacy dla odczytu
+
+    Vector &operator [] (int index); // Operator indeksujacy dla zapisu
 };
 
-std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr);
-std::istream& operator >> (std::istream &Strm, Rectangle &Pr);
+std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr); // Operator bitowy <<
+
+std::istream& operator >> (std::istream &Strm, Rectangle &Pr); // Operator bitowy >>
 
 
 #endif

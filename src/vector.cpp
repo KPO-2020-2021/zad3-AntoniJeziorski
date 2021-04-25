@@ -28,8 +28,8 @@ Vector::Vector(double tmp[SIZE]) {
     }
     else {
         for (int i = 0; i < SIZE; ++i) {
-        size[i] = tmp[i];
-    }
+            size[i] = tmp[i];
+        }
     }
 }
 
