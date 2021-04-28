@@ -87,9 +87,3 @@ TEST_CASE("test metody Determinant z bledem") {
     Matrix test(array2);
     WARN_THROWS(test.Determinant());
 }
-
-TEST_CASE("test metody Determinant z bledem v2") {
-    double array2[2][2] = {1, 2, 3, 0};
-    Matrix test(array2);
-    WARN_THROWS(test.Determinant());
-}
