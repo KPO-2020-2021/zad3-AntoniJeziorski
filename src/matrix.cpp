@@ -171,3 +171,24 @@ Matrix Matrix::RotationMatrix(double angle) {
     this->value[1][1] = cos(angle*M_PI/180);
     return *this;
 }
+
+double Matrix::Determinant() const {
+    double det, ratio;
+    Matrix tmp = *this;
+    for(int i=0; i < SIZE; i++) {
+        if(tmp(i,i) == 0) {
+            throw std::runtime_error("Blad macierzy");
+        }
+        for(int j = i + 1; j < SIZE; j++) {
+            ratio = tmp(j,i)/tmp(i,i);
+            for(int k = 0; k < SIZE; k++) {
+                tmp(j,k) = tmp(j,k) - ratio*tmp(i,k);
+            }
+        }
+    }
+    det = tmp(0,0) * tmp(1,1);
+
+
+
+    return det;   
+}

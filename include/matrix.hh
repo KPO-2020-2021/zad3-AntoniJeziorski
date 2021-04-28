@@ -26,6 +26,8 @@ public:
     const double &operator () (unsigned int row, unsigned int column) const; // operator funkcyjny dla zapisu
 
     Matrix RotationMatrix(double);  // Metoda tworzaca macierz obrotu
+
+    double Determinant() const;
 };
 
 std::istream &operator>>(std::istream &in, Matrix &mat);  // Operator bitowy >>
