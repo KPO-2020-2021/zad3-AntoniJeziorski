@@ -1,5 +1,3 @@
-#ifndef VECTOR_HH
-#define VECTOR_HH
 
 #pragma once
 
@@ -38,4 +36,4 @@ std::istream &operator >> (std::istream &in, Vector &tmp); // Operator bitowy >>
 
 
 
-#endif
+

@@ -1,5 +1,4 @@
-#ifndef MATRIX_HH
-#define MATRIX_HH
+
 
 #pragma once
 
@@ -33,4 +32,4 @@ std::istream &operator>>(std::istream &in, Matrix &mat);  // Operator bitowy >>
 
 std::ostream &operator<<(std::ostream &out, Matrix const &mat); // Operator bitowy <<
 
-#endif
+

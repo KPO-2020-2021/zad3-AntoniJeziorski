@@ -1,3 +1,10 @@
+## Uruchamianie
+1. Nalezy zbudować plik MakeFile przy pomocy programu cmake w fodlerez build.
+2. W folderze build skompilować program poleceniem make.
+3. Uruchomić program poleceniem ./main.
+
+## Testy
+Po skompilowaniu poleceniem make, należy użyć polecenia ./unit_tests.
 
 ## Building
 

@@ -1,5 +1,4 @@
-#ifndef RECTANGLE_HH
-#define RECTANGLE_HH
+#pragma once
 
 #include <iostream>
 #include <cmath>
@@ -36,5 +35,3 @@ std::ostream& operator << (std::ostream &Strm, const Rectangle &Pr); // Operator
 
 std::istream& operator >> (std::istream &Strm, Rectangle &Pr); // Operator bitowy >>
 
-
-#endif
