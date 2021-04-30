@@ -14,9 +14,9 @@ class Rectangle {
 
   public:
 
-    Rectangle Translation(Vector); // Metoda translacji
+    Rectangle Translation(const Vector); // Metoda translacji
 
-    Rectangle Rotation(double, int); // Metoda obrotu
+    Rectangle Rotation(const double, const int); // Metoda obrotu
 
     void Sides() const; // Metoda sprawdzajaca boki
 

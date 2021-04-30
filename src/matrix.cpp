@@ -47,7 +47,7 @@ Matrix::Matrix(double tmp[SIZE][SIZE]) {
  |      Iloczyn dwoch skladnikow przekazanych jako wektor.                    |
  */
 
-Vector Matrix::operator * (Vector tmp) {
+Vector Matrix::operator * (const Vector tmp) {
     Vector result;
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {
@@ -110,7 +110,7 @@ const double &Matrix::operator () (unsigned int row, unsigned int column) const 
  |  Zwraca:                                                                   |
  |      Matrix - iloczyn dwóch podanych macierzy.                             |
  */
-Matrix Matrix::operator + (Matrix tmp) {
+Matrix Matrix::operator + (const Matrix tmp) {
     Matrix result;
     for (int i = 0; i < SIZE; ++i) {
         for (int j = 0; j < SIZE; ++j) {

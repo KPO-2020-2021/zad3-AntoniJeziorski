@@ -78,7 +78,7 @@ std::istream& operator >> (std::istream &Strm, Rectangle &Pr) {
  *  Prostokat po przesunieciu o zadany wektor
  */
 
-Rectangle Rectangle::Translation(Vector vector) {
+Rectangle Rectangle::Translation(const Vector vector) {
     for(int i=0; i<REC; i++) {
         this->Corners[i] = this->Corners[i] + vector;
     }
@@ -98,7 +98,7 @@ Rectangle Rectangle::Translation(Vector vector) {
  *  Prostokat po wykonaniu obrotu
  */
 
-Rectangle Rectangle::Rotation(double angle, int amount) {
+Rectangle Rectangle::Rotation(const double angle, const int amount) {
     Matrix Rotation;
     Rotation.RotationMatrix(angle);
     for(int j=0; j < amount; j++){

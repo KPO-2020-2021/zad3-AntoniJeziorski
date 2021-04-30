@@ -17,9 +17,9 @@ public:
 
     Matrix();                               // Konstruktor klasy
 
-    Vector operator * (Vector tmp);           // Operator mnożenia przez wektor
+    Vector operator * (const Vector tmp);           // Operator mnożenia przez wektor
 
-    Matrix operator + (Matrix tmp);           // Operator dodawania macierzy
+    Matrix operator + (const Matrix tmp);           // Operator dodawania macierzy
 
     double  &operator () (unsigned int row, unsigned int column);     // Operator funkcyjny dla odczytu
     
